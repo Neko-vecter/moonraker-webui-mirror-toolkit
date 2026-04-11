@@ -54,12 +54,10 @@ class NekoRes:
 
     @staticmethod
     def ensure_safe_name(filename: str) -> str:
-        """参考 TUNA 逻辑，过滤文件名中的非法字符"""
         filename = filename.replace("\0", " ")
         if filename == ".":
             return " ."
         elif filename == "..":
             return ". ."
         else:
-            # 将路径分隔符替换为下划线，防止恶意名称创建子目录
             return filename.replace("/", "_").replace("\\", "_")
